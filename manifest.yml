@@ -1,6 +1,7 @@
 ---
 applications:
-- name: tnt-utilities
+- name: tnt-utilities-blue
+  host: tnt-utilities
   memory: 512M
   instances: 1
   path: target/tnt-utilities-0.0.1-SNAPSHOT.jar
