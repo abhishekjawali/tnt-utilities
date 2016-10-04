@@ -5,6 +5,8 @@ import java.util.List;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -23,6 +25,7 @@ import com.emc.ps.appmod.tnt.utilities.service.BookService;
 import io.swagger.annotations.ApiOperation;
 
 @RestController
+@RefreshScope
 @RequestMapping("/api/utilities/book")
 public class BookController {
 
@@ -30,16 +33,20 @@ public class BookController {
 
 	@Autowired
 	private BookService bookService;
+	
+	@Value("${message}")
+	  private String message;
 
 	@ApiOperation("Info for book miroservice")
 	@RequestMapping(value = "/info", method = RequestMethod.GET)
 	public ResponseObject bookInfo() {
-		return CommonUtils.buildSuccessResponse("Utilities MS is running!!!");
+		return CommonUtils.buildSuccessResponse(message);
 	}
 
 	@ApiOperation("Lists all the books")
 	@RequestMapping(value = "/list", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<List<Book>> bookList() {
+		LOGGER.info("Retrieving list of books");
 		List<Book> bookList = bookService.getBookList();
 		return new ResponseEntity<List<Book>>(bookList, HttpStatus.OK);
 		// return CommonUtils.buildSuccessResponse(bookList);
@@ -48,6 +55,7 @@ public class BookController {
 	@ApiOperation("Gets the details of the book by book-id")
 	@RequestMapping(value = "{bookId}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<Book> bookDetail(@PathVariable Long bookId) {
+		LOGGER.info("Retrieving details of book with book ID {}", bookId);
 		Book book = bookService.getBookDetail(bookId);
 		return new ResponseEntity<Book>(book, HttpStatus.OK);
 		// return CommonUtils.buildSuccessResponse(book);
@@ -56,6 +64,7 @@ public class BookController {
 	@ApiOperation("Creates a new book")
 	@RequestMapping(method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<Book> createBook(@RequestBody Book book) {
+		LOGGER.info("Creating a new book");
 		Book bookResp = bookService.createBook(book);
 		return new ResponseEntity<Book>(bookResp, HttpStatus.OK);
 		// return CommonUtils.buildSuccessResponse(bookResp);
@@ -64,6 +73,7 @@ public class BookController {
 	@ApiOperation("Updates the existing book")
 	@RequestMapping(method = RequestMethod.PUT, produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<Book> updateBook(@RequestBody Book book) {
+		LOGGER.info("Updating the book");
 		Book bookResp = bookService.updateBook(book);
 		return new ResponseEntity<Book>(bookResp, HttpStatus.OK);
 		// return CommonUtils.buildSuccessResponse(bookResp);
@@ -72,6 +82,7 @@ public class BookController {
 	@ApiOperation("Deletes the existing book")
 	@RequestMapping(value = "{bookId}", method = RequestMethod.DELETE, produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<Book> deleteBook(@PathVariable Long bookId) {
+		LOGGER.info("Deleting the book");
 		bookService.deleteBook(bookId);
 		return new ResponseEntity<Book>(HttpStatus.OK);
 		// return CommonUtils.buildSuccessResponse(null);
