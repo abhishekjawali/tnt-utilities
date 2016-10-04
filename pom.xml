@@ -95,6 +95,12 @@
 			<version>2.2.2</version>
 			<scope>compile</scope>
 		</dependency>
+		
+		<dependency>
+			<groupId>org.flywaydb</groupId>
+			<artifactId>flyway-core</artifactId>
+		</dependency>
+		
 	</dependencies>
 
 	<build>
