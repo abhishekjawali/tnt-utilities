@@ -3,4 +3,4 @@ spring:
     name: tnt-utilities
   cloud:
     config:
-      uri: http://localhost:${config.port:8888}
+      uri: http://tnt-config-server.cfapps.io
