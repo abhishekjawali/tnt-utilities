@@ -21,7 +21,7 @@ public class SwaggerConfig {
 	}
 
 	private ApiInfo apiInfo() {
-		return new ApiInfoBuilder().title("TNT Utilities").description("TNT Utilities").termsOfServiceUrl("")
+		return new ApiInfoBuilder().title("Web V1.0").description("Web V1.0").termsOfServiceUrl("")
 				.contact("").license("Apache License Version 2.0").licenseUrl("").version("1.0").build();
 	}
 }
