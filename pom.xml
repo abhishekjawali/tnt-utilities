@@ -16,11 +16,28 @@
 
 	<repositories>
 		<repository>
-			<id>oss-jfrog-artifactory</id>
-			<name>oss-jfrog-artifactory-releases</name>
-			<url>http://oss.jfrog.org/artifactory/oss-release-local</url>
+			<snapshots>
+				<enabled>false</enabled>
+			</snapshots>
+			<id>central</id>
+			<name>libs-release</name>
+			<url>http://10.63.39.117:8081/artifactory/libs-release</url>
+		</repository>
+		<repository>
+			<snapshots />
+			<id>snapshots</id>
+			<name>libs-snapshot</name>
+			<url>http://10.63.39.117:8081/artifactory/libs-snapshot</url>
 		</repository>
 	</repositories>
+
+	<distributionManagement>
+		<snapshotRepository>
+			<id>snapshots</id>
+			<name>liacs117-snapshots</name>
+			<url>http://10.63.39.117:8081/artifactory/libs-snapshot-local</url>
+		</snapshotRepository>
+	</distributionManagement>
 
 	<parent>
 		<groupId>org.springframework.boot</groupId>
