@@ -40,7 +40,8 @@ public class BookController {
 	@ApiOperation("Info for book miroservice")
 	@RequestMapping(value = "/info", method = RequestMethod.GET)
 	public ResponseObject bookInfo() {
-		return CommonUtils.buildSuccessResponse(message);
+		//return CommonUtils.buildSuccessResponse(message);
+		return CommonUtils.buildSuccessResponse("New MS!!!");
 	}
 
 	@ApiOperation("Lists all the books")
