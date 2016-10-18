@@ -3,10 +3,13 @@ package com.emc.ps.appmod.tnt.utilities;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.cloud.context.config.annotation.RefreshScope;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RestController;
 
 @SpringBootApplication
 @EnableAutoConfiguration
+@RestController
 public class Application {
 
 	public static void main(String[] args) {
@@ -16,6 +19,11 @@ public class Application {
 			System.out.println(e.getMessage());
 			e.printStackTrace();
 		}
+	}
+	
+	@RequestMapping(value = "/appInfo", method = RequestMethod.GET)
+	public String bookInfo() {
+		return "Utilities Microservice is running!";
 	}
 
 }
