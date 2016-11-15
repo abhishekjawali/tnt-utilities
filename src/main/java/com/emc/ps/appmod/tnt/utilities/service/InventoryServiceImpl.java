@@ -6,15 +6,11 @@ import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
 
-import javax.persistence.criteria.CriteriaBuilder;
-import javax.persistence.criteria.CriteriaQuery;
-import javax.persistence.criteria.Predicate;
-import javax.persistence.criteria.Root;
-
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.jpa.domain.Specification;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
-import org.springframework.util.StringUtils;
 
 import com.emc.ps.appmod.tnt.domain.utilities.Inventory;
 import com.emc.ps.appmod.tnt.domain.utilities.InventoryType;
@@ -23,9 +19,15 @@ import com.emc.ps.appmod.tnt.utilities.entity.InventoryEntity;
 
 @Service
 public class InventoryServiceImpl implements InventoryService {
+	
+	private static final Logger LOGGER = LoggerFactory.getLogger(InventoryServiceImpl.class);
 
 	@Autowired
 	private InventoryDAO inventoryDao;
+	
+	@Value("${country}")
+	private String country;
+	
 
 	@Override
 	public List<String> getInventoryTypeList() {
@@ -194,6 +196,8 @@ public class InventoryServiceImpl implements InventoryService {
 		in.setSerialNumber(inEn.getSerialNumber());
 		in.setSpeed(inEn.getSpeed());
 		in.setStorage(inEn.getStorage());
+		in.setCountry(country);
+		LOGGER.info("country : "+ country);
 
 		int rent = inEn.getRenting();
 		if (rent == 0) {
