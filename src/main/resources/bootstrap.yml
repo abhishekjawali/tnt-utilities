@@ -1,6 +1,3 @@
 spring:
   application:
     name: tnt-utilities
-  cloud:
-    config:
-      uri: http://tnt-config-server.cfapps.io

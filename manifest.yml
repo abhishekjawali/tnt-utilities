@@ -1,12 +1,9 @@
 ---
 applications:
-- name: tnt-utilities-blue
+- name: tnt-utilities
   host: tnt-utilities
   memory: 512M
   instances: 1
   path: target/tnt-utilities-0.0.1-SNAPSHOT.jar
   services:
-  - mysql-utilities
-  - tnt-logs
-
-
+  - mysql-utility-flyway

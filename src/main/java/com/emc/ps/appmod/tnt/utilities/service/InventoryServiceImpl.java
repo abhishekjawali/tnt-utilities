@@ -25,8 +25,8 @@ public class InventoryServiceImpl implements InventoryService {
 	@Autowired
 	private InventoryDAO inventoryDao;
 	
-	@Value("${country}")
-	private String country;
+	//@Value("${country}")
+	//private String country;
 	
 
 	@Override
@@ -196,8 +196,8 @@ public class InventoryServiceImpl implements InventoryService {
 		in.setSerialNumber(inEn.getSerialNumber());
 		in.setSpeed(inEn.getSpeed());
 		in.setStorage(inEn.getStorage());
-		in.setCountry(country);
-		LOGGER.info("country : "+ country);
+		//in.setCountry(country);
+		//LOGGER.info("country : "+ country);
 
 		int rent = inEn.getRenting();
 		if (rent == 0) {
