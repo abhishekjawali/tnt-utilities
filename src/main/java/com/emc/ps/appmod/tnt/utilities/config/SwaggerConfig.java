@@ -21,7 +21,7 @@ public class SwaggerConfig {
 	}
 
 	private ApiInfo apiInfo() {
-		return new ApiInfoBuilder().title("Web V1.1").description("Web V1.1").termsOfServiceUrl("")
+		return new ApiInfoBuilder().title("Web V2.0").description("Web V2.0").termsOfServiceUrl("")
 				.contact("").license("Apache License Version 2.0").licenseUrl("").version("2.0").build();
 	}
 }
