@@ -7,3 +7,4 @@ applications:
   path: target/tnt-utilities-0.0.1-SNAPSHOT.jar
   services:
   - mysql-utility-flyway
+  - tnt-new-logs

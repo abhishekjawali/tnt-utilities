@@ -16,3 +16,8 @@ spring.datasource.time-between-eviction-runs-millis=1
 #spring.jpa.hibernate.naming.strategy=SpringPhysicalNamingStrategy
 
 #spring.jpa.hibernate.ddl-auto=validate
+
+flyway.validate-on-migrate=false
+
+eureka.instance.hostname: ${vcap.application.uris[0]}
+eureka.instance.non-secure-port=80
