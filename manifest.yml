@@ -1,10 +1,10 @@
 ---
 applications:
 - name: tnt-utilities
-  host: tnt-utilities
+  host: tnt-utilities-oauth
   memory: 512M
   instances: 1
   path: target/tnt-utilities-0.0.1-SNAPSHOT.jar
   services:
-  - mysql-utility-flyway
+  - tnt-utilities-oauth-service-inst
   - tnt-new-logs
