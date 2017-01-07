@@ -14,7 +14,7 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 	</properties>
 
-	<repositories>
+	<!--<repositories>
 		<repository>
 			<snapshots>
 				<enabled>false</enabled>
@@ -37,7 +37,7 @@
 			<name>liacs117-snapshots</name>
 			<url>http://10.63.39.117:8081/artifactory/libs-snapshot-local</url>
 		</snapshotRepository>
-	</distributionManagement>
+	</distributionManagement> -->
 
 	<parent>
 		<groupId>org.springframework.boot</groupId>
